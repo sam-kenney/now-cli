@@ -21,3 +21,11 @@ Example:
 export WEATHER_API_KEY="dGhpcyBpcyBhIHRlc3Qgc3RyaW5n"
 export CITY="sydney"
 ```
+
+Once you've set up your `.env` file, simply type `now` into your command line.
+
+<code>
+<span>[TIME] </span><span style="color:magenta">21:19:06</span><br>
+<span>[DATE] </span><span style="color:cyan">Thu Jan 2022</span><br>
+<span>[WTHR] </span><span style="color:gold">20°C Clouds</span>
+</code>
