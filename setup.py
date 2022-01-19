@@ -7,7 +7,10 @@ with open("requirements.txt", "r") as file:
 
 setup(
     py_modules=["now"],
-    install_requires=requirements,
+    install_requires=requirements
+    + [
+        "enforce_typing @ git+https://github.com/mr-strawberry66/python-static-type-checking"
+    ],
     entry_points={
         "console_scripts": [
             "now = now:cli",

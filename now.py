@@ -1,4 +1,5 @@
 """Module containing Now CLI."""
+from errno import EMFILE
 import os
 from datetime import datetime
 
@@ -7,6 +8,8 @@ import click
 from colorama import Fore, init
 
 from dotenv import load_dotenv
+
+from enforce_typing import enforce_typing
 
 import requests
 
@@ -22,7 +25,8 @@ def cli():
     )
 
 
-def _time(now: datetime):
+@enforce_typing
+def _time(now: datetime) -> str:
     """
     Return the current time.
 
@@ -36,7 +40,8 @@ def _time(now: datetime):
     return f"[TIME] {Fore.MAGENTA}{now.strftime('%H:%M:%S')}"
 
 
-def _date(now: datetime):
+@enforce_typing
+def _date(now: datetime) -> str:
     """
     Return the current date.
 
@@ -50,15 +55,19 @@ def _date(now: datetime):
     return f"[DATE] {Fore.CYAN}{now.strftime('%a %b %d %Y')}"
 
 
-def _weather():
+@enforce_typing
+def _weather() -> str:
     """Return the current weather at a specified city."""
     api_key: str = os.environ["WEATHER_API_KEY"]
     city: str = os.environ["CITY"]
+
     resp = requests.get(
         url=f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
     ).json()
+
     temp: str = str(int(resp["main"]["feels_like"] - 273.15)) + "°C"
     weather: str = resp["weather"][0]["main"]
+
     return f"[WTHR] {Fore.YELLOW}{temp} {weather}"
 
 
