@@ -9,7 +9,7 @@ setup(
     py_modules=["now"],
     install_requires=requirements
     + [
-        "enforce_typing @ git+https://github.com/mr-strawberry66/python-static-type-checking"
+        "enforce_typing @ git+https://github.com/mr-strawberry66/python-type-enforcement"
     ],
     entry_points={
         "console_scripts": [
