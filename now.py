@@ -1,5 +1,4 @@
 """Module containing Now CLI."""
-from errno import EMFILE
 import os
 from datetime import datetime
 
