@@ -147,3 +147,4 @@ cython_debug/
 *.env
 
 .vscode/
+.now-cli/
