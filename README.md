@@ -22,7 +22,7 @@ Paste in your API Token: dGhpcyBpcyBhIHRlc3Qgc3RyaW5n
 Enter the city you live in: sydney
 ```
 
-These prompts will only occur on the first execution. This information is stored at `.now-cli/.credentials.json` should you ever need to update it.
+These prompts will only occur on the first execution. This information is stored in your home directory at `.now-cli/.credentials.json` should you ever need to update it.
 
 <code>
 <span>[TIME] </span><span style="color:magenta">21:19:06</span><br>

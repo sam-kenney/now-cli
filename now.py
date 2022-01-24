@@ -77,8 +77,9 @@ def _weather() -> str:
 @enforce_typing
 def _get_config() -> Dict[str, str]:
     """Load user config file for now CLI."""
-    dir_path: str = os.path.join(".now-cli")
-    config_path: str = os.path.join(".now-cli", ".credentials.json")
+    home_dir: str = os.path.expanduser("~")
+    dir_path: str = os.path.join(home_dir, ".now-cli")
+    config_path: str = os.path.join(home_dir, ".now-cli", ".credentials.json")
 
     if os.path.exists(dir_path):
         if os.path.isfile(config_path):
