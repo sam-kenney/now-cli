@@ -31,10 +31,6 @@ def _time(now: datetime) -> str:
     now: datetime
         A datetime.now() object.
     """
-    if not isinstance(now, datetime):
-        raise ValueError(
-            f"Passed in argument is of type {now.__qualname__}, must be datetime."
-        )
     return f"[TIME] {Fore.MAGENTA}{now.strftime('%H:%M:%S')}"
 
 
@@ -46,10 +42,6 @@ def _date(now: datetime) -> str:
     now: datetime
         A datetime.now() object.
     """
-    if not isinstance(now, datetime):
-        raise ValueError(
-            f"Passed in argument is of type {now.__qualname__}, must be datetime."
-        )
     return f"[DATE] {Fore.CYAN}{now.strftime('%a %b %d %Y')}"
 
 
