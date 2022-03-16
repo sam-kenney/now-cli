@@ -5,7 +5,7 @@ Small CLI tool to print time, date, and weather details to the terminal.
 ## Installation
 To use this CLI, you must have an installation of [Python 3](https://www.python.org/downloads/).
 
-To install this CLI, execute `pip3 install git+https://github.com/mr-strawberry66/now-cli`
+To install this CLI, execute `pip3 install now-info-cli`
 
 ## Setup
 When you run the `now` command, you will be prompted to input some information.

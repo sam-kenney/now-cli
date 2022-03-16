@@ -1,14 +1,12 @@
 """Module containing Now CLI."""
+from __future__ import annotations
 import json
 import os
 from datetime import datetime
-from typing import Dict
 
 import click
 
 from colorama import Fore, init
-
-from enforce_typing import enforce_typing
 
 import requests
 
@@ -23,7 +21,6 @@ def cli():
     )
 
 
-@enforce_typing
 def _time(now: datetime) -> str:
     """
     Return the current time.
@@ -34,7 +31,6 @@ def _time(now: datetime) -> str:
     return f"[TIME] {Fore.MAGENTA}{now.strftime('%H:%M:%S')}"
 
 
-@enforce_typing
 def _date(now: datetime) -> str:
     """
     Return the current date.
@@ -45,10 +41,9 @@ def _date(now: datetime) -> str:
     return f"[DATE] {Fore.CYAN}{now.strftime('%a %b %d %Y')}"
 
 
-@enforce_typing
 def _weather() -> str:
     """Return the current weather at a specified city."""
-    config: Dict[str, str] = _get_config()
+    config: dict[str, str] = _get_config()
     api_key: str = config["WEATHER_API_KEY"]
     city: str = config["CITY"]
 
@@ -66,41 +61,33 @@ def _weather() -> str:
         )
 
 
-@enforce_typing
-def _get_config() -> Dict[str, str]:
+def _get_config() -> dict[str, str]:
     """Load user config file for now CLI."""
     home_dir: str = os.path.expanduser("~")
     dir_path: str = os.path.join(home_dir, ".now-cli")
     config_path: str = os.path.join(home_dir, ".now-cli", ".credentials.json")
 
     if os.path.exists(dir_path):
-        if os.path.isfile(config_path):
-            with open(config_path) as file:
-                return json.load(file)
-        else:
+        if not os.path.isfile(config_path):
             _create_config_file(config_path)
-            with open(config_path) as file:
-                return json.load(file)
 
     else:
         _create_config_dir(dir_path, config_path)
-        with open(config_path) as file:
-            return json.load(file)
+
+    with open(config_path) as file:
+        return json.load(file)
 
 
-@enforce_typing
 def _create_config_dir(dir_path: str, config_path: str) -> str:
     """Create configuration directory."""
     if os.path.exists(dir_path):
         _create_config_file(config_path=config_path)
-        return config_path
     else:
         os.makedirs(dir_path)
         _create_config_file(config_path=config_path)
-        return config_path
+    return config_path
 
 
-@enforce_typing
 def _create_config_file(config_path: str) -> str:
     """Create configuration file."""
     if os.path.isfile(config_path):
