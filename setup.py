@@ -18,6 +18,7 @@ setup(
     description="Command line utilities for information about now",
     long_description=long_description,
     long_description_content_type="text/markdown",
+    url="https://github.com/mr-strawberry66/now-cli",
     py_modules=["now"],
     install_requires=requirements,
     entry_points={
